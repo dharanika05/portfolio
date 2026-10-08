@@ -1,0 +1,655 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dharanika - Portfolio</title>
+
+
+    <style>
+
+        /* BASIC */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0b1020;
+            color: white;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+            background-color: #151c30;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        nav h2 {
+            color: #00d9ff;
+            margin: 5px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        nav a:hover {
+            color: #00d9ff;
+        }
+
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 60px 10%;
+        }
+
+        h1 {
+            font-size: 45px;
+        }
+
+        h2 {
+            color: #00d9ff;
+        }
+
+        p {
+            color: #cccccc;
+        }
+
+
+        /* HOME */
+
+        #home {
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #home h1 {
+            color: white;
+        }
+
+        #typing {
+            color: #00d9ff;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #00d9ff;
+            color: black;
+            padding: 12px 20px;
+            margin: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: white;
+        }
+
+
+        /* ABOUT */
+
+        #about {
+            background-color: #10172a;
+            text-align: center;
+        }
+
+        .profile {
+            width: 120px;
+            height: 120px;
+            background-color: #00d9ff;
+            color: black;
+            border-radius: 50%;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+
+        /* SKILLS */
+
+        .skill {
+            background-color: #151c30;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .bar {
+            background-color: #333b50;
+            height: 10px;
+            border-radius: 10px;
+        }
+
+        .bar div {
+            background-color: #00d9ff;
+            height: 10px;
+            border-radius: 10px;
+        }
+
+
+        /* PROJECTS */
+
+        #projects {
+            background-color: #10172a;
+        }
+
+        .project {
+            background-color: #151c30;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #263149;
+            color: #00d9ff;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+
+        /* CONTACT */
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+
+            background-color: #151c30;
+            color: white;
+
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00d9ff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: white;
+        }
+
+        #message {
+            color: #00d9ff;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background-color: #080c18;
+            text-align: center;
+            padding: 25px;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            h1 {
+                font-size: 35px;
+            }
+
+            section {
+                padding: 50px 7%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <h2>&lt; Dharanika /&gt;</h2>
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+
+    <!-- HOME -->
+
+    <section id="home">
+
+        <p>HELLO, I'M</p>
+
+        <h1>
+            Dharanika
+        </h1>
+
+        <h2>
+            I'm a
+            <span id="typing">Developer</span>
+        </h2>
+
+        <p>
+
+            B.Tech Information Technology student
+            interested in Web Development, UI/UX,
+            Cloud Computing and emerging technologies.
+
+        </p>
+
+
+        <a href="#projects"
+           class="button">
+
+            View My Projects
+
+        </a>
+
+
+        <a href="#contact"
+           class="button">
+
+            Contact Me
+
+        </a>
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2>About Me</h2>
+
+
+        <div class="profile">
+            D
+        </div>
+
+
+        <h3>
+            B.Tech Information Technology
+        </h3>
+
+
+        <p>
+
+            I am an Information Technology student
+            who enjoys learning new technologies
+            and creating useful digital solutions.
+
+        </p>
+
+
+        <p>
+
+            My interests include Web Development,
+            UI/UX Design, Cloud Computing and
+            Artificial Intelligence.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2>My Skills</h2>
+
+
+        <div class="skill">
+
+            <h3>HTML - 90%</h3>
+
+            <div class="bar">
+
+                <div style="width:90%"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <h3>CSS - 85%</h3>
+
+            <div class="bar">
+
+                <div style="width:85%"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <h3>JavaScript - 75%</h3>
+
+            <div class="bar">
+
+                <div style="width:75%"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <h3>Python - 80%</h3>
+
+            <div class="bar">
+
+                <div style="width:80%"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <h3>Java - 70%</h3>
+
+            <div class="bar">
+
+                <div style="width:70%"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2>My Projects</h2>
+
+
+        <div class="project">
+
+            <h3>
+                01. AI Scholarship Navigator
+            </h3>
+
+            <p>
+
+                An AI-based application that helps
+                students find suitable scholarships
+                according to their profile.
+
+            </p>
+
+            <span class="tag">Python</span>
+
+            <span class="tag">AI</span>
+
+            <span class="tag">FastAPI</span>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                02. Yatraa Travel App
+            </h3>
+
+            <p>
+
+                A travel booking application design
+                created to help users explore destinations
+                and travel experiences.
+
+            </p>
+
+            <span class="tag">Figma</span>
+
+            <span class="tag">UI/UX</span>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                03. QR Verification System
+            </h3>
+
+            <p>
+
+                A QR-based verification application
+                designed to connect QR codes with
+                authorized digital content.
+
+            </p>
+
+            <span class="tag">HTML</span>
+
+            <span class="tag">JavaScript</span>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                04. Weather Application
+            </h3>
+
+            <p>
+
+                A simple weather application that
+                displays weather information using
+                an API.
+
+            </p>
+
+            <span class="tag">HTML</span>
+
+            <span class="tag">CSS</span>
+
+            <span class="tag">API</span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2>Contact Me</h2>
+
+        <p>
+            Have a project idea? Let's connect!
+        </p>
+
+
+        <form onsubmit="sendMessage(event)">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <textarea
+                id="userMessage"
+                rows="5"
+                placeholder="Enter your message"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+
+                Send Message
+
+            </button>
+
+
+            <p id="message"></p>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>
+            &lt; Dharanika /&gt;
+        </h3>
+
+        <p>
+            Designed and Developed by Dharanika
+        </p>
+
+        <p>
+            © 2026 My Portfolio
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* TYPING EFFECT */
+
+        let words = [
+            "Developer",
+            "UI/UX Designer",
+            "Problem Solver",
+            "Tech Explorer"
+        ];
+
+        let wordNumber = 0;
+
+        function changeWord() {
+
+            document.getElementById("typing").innerText =
+                words[wordNumber];
+
+            wordNumber++;
+
+            if (wordNumber == words.length) {
+                wordNumber = 0;
+            }
+
+        }
+
+        setInterval(changeWord, 1500);
+
+
+
+        /* CONTACT FORM */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+
+            let name =
+                document.getElementById("name").value;
+
+
+            let email =
+                document.getElementById("email").value;
+
+
+            let userMessage =
+                document.getElementById("userMessage").value;
+
+
+            document.getElementById("message").innerText =
+                "Thank you " + name +
+                "! Your message has been sent successfully.";
+
+
+            document.querySelector("form").reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```

@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ClassiFind - Classified Marketplace</title>
+
+<style>
+
+/* ================= BASIC ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f6f8f5;
+    color: #17221b;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    height: 75px;
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    border-bottom: 1px solid #e5e8e5;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-box {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #236b4d;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #56605a;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #236b4d;
+}
+
+.post-btn {
+    background: #236b4d;
+    color: white;
+
+    border: none;
+    padding: 11px 20px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 70px 10%;
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            #dceee2,
+            transparent 30%
+        ),
+        #f6f8f5;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.small-title {
+    color: #236b4d;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 65px;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #236b4d;
+}
+
+.hero-description {
+    color: #69736d;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.explore-btn,
+.sell-main-btn {
+    border: none;
+
+    background: #236b4d;
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.explore-btn:hover,
+.sell-main-btn:hover,
+.post-btn:hover,
+.submit-btn:hover,
+.buy-btn:hover {
+    background: #174b36;
+}
+
+/* ================= HERO GRAPHIC ================= */
+
+.hero-card {
+    width: 400px;
+    height: 400px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-circle {
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background: #d9ebdf;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 90px;
+
+    box-shadow: 0 20px 50px rgba(35,107,77,0.15);
+}
+
+.floating-card {
+    position: absolute;
+
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.floating-card strong {
+    display: block;
+}
+
+.floating-card small {
+    color: #89928c;
+}
+
+.card-one {
+    top: 40px;
+    left: 0;
+}
+
+.card-two {
+    bottom: 50px;
+    right: 0;
+}
+
+/* ================= SEARCH ================= */
+
+.search-section {
+    max-width: 1100px;
+
+    margin: -30px auto 50px;
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    gap: 15px;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.search-box {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: 1px solid #e2e6e3;
+
+    border-radius: 10px;
+
+    padding: 0 15px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 15px;
+
+    font-size: 15px;
+}
+
+.search-section select {
+    border: 1px solid #e2e6e3;
+
+    border-radius: 10px;
+
+    padding: 0 20px;
+
+    outline: none;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories {
+    padding: 20px 10% 60px;
+}
+
+.categories h2 {
+    margin-bottom: 25px;
+}
+
+.category-container {
+    display: grid;
+
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 15px;
+}
+
+.category {
+    background: white;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    border: 1px solid #e8ece9;
+
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+
+    border-color: #236b4d;
+}
+
+.category-icon {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-section {
+    padding: 40px 10% 80px;
+}
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+}
+
+#resultCount {
+    color: #69736d;
+}
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid #e7ebe8;
+
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.product-image {
+    height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e9f2ec;
+
+    font-size: 65px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    font-size: 11px;
+
+    color: #236b4d;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+.product-info h3 {
+    margin: 8px 0;
+}
+
+.description {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    height: 42px;
+}
+
+.location {
+    color: #888;
+
+    font-size: 13px;
+
+    margin: 12px 0;
+}
+
+.price {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 12px;
+
+    background: #236b4d;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* ================= SELL ================= */
+
+.sell-section {
+    margin: 40px 10% 80px;
+
+    padding: 60px;
+
+    border-radius: 25px;
+
+    background: #dceee2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.sell-content {
+    max-width: 600px;
+}
+
+.sell-content h2 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.sell-content h2 span {
+    color: #236b4d;
+}
+
+.sell-description {
+    color: #607066;
+
+    margin-bottom: 25px;
+}
+
+.sell-icon {
+    font-size: 120px;
+}
+
+/* ================= ABOUT ================= */
+
+.about {
+    background: white;
+
+    text-align: center;
+
+    padding: 80px 20%;
+
+    border-top: 1px solid #e8ebe9;
+}
+
+.about h2 {
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.about-description {
+    color: #69736d;
+
+    line-height: 1.8;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #17221b;
+
+    color: white;
+
+    padding: 35px 10%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+footer p {
+    color: #aeb7b1;
+
+    font-size: 13px;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.6);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 500;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+
+    width: 90%;
+
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+
+    right: 20px;
+    top: 15px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 25px;
+}
+
+.modal-content label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin: 15px 0 7px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+
+    border: 1px solid #ddd;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.modal-content textarea {
+    height: 100px;
+
+    resize: none;
+}
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #236b4d;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .category-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    .post-btn {
+        display: none;
+    }
+
+    .hero {
+        padding: 50px 5%;
+    }
+
+    .hero-card {
+        width: 300px;
+        height: 300px;
+    }
+
+    .main-circle {
+        width: 190px;
+        height: 190px;
+    }
+
+    .search-section {
+        margin: -20px 5% 40px;
+
+        flex-direction: column;
+    }
+
+    .search-section select {
+        padding: 15px;
+    }
+
+    .categories,
+    .products-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sell-section {
+        margin-left: 5%;
+        margin-right: 5%;
+
+        padding: 35px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .sell-content h2 {
+        font-size: 30px;
+    }
+
+    .sell-icon {
+        font-size: 70px;
+    }
+
+    .about {
+        padding: 60px 8%;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-box">
+            CF
+        </div>
+
+        ClassiFind
+
+    </div>
+
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#products">Explore</a>
+
+        <a href="#sell">Sell</a>
+
+        <a href="#about">About</a>
+
+    </nav>
+
+
+    <button class="post-btn" onclick="openSellForm()">
+        + Post Ad
+    </button>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="small-title">
+            SMART CLASSIFIED MARKETPLACE
+        </p>
+
+
+        <h1>
+            Find it.<br>
+
+            <span>List it.</span><br>
+
+            Love it.
+        </h1>
+
+
+        <p class="hero-description">
+
+            Discover amazing products, services and
+            opportunities around you — all in one
+            simple marketplace.
+
+        </p>
+
+
+        <button
+            class="explore-btn"
+            onclick="scrollToProducts()">
+
+            Explore Listings →
+
+        </button>
+
+    </div>
+
+
+
+    <div class="hero-card">
+
+        <div class="floating-card card-one">
+
+            🛍️
+
+            <div>
+
+                <strong>1,250+</strong>
+
+                <small>Listings</small>
+
+            </div>
+
+        </div>
+
+
+        <div class="main-circle">
+
+            🔎
+
+        </div>
+
+
+        <div class="floating-card card-two">
+
+            ⭐
+
+            <div>
+
+                <strong>4.9/5</strong>
+
+                <small>User Rating</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        🔍
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for products..."
+            onkeyup="searchProducts()"
+        >
+
+    </div>
+
+
+    <select
+        id="categoryFilter"
+        onchange="filterProducts()">
+
+        <option value="all">
+            All Categories
+        </option>
+
+        <option value="Electronics">
+            Electronics
+        </option>
+
+        <option value="Vehicles">
+            Vehicles
+        </option>
+
+        <option value="Furniture">
+            Furniture
+        </option>
+
+        <option value="Books">
+            Books
+        </option>
+
+        <option value="Fashion">
+            Fashion
+        </option>
+
+        <option value="Others">
+            Others
+        </option>
+
+    </select>
+
+</section>
+
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories">
+
+    <h2>
+        Browse Categories
+    </h2>
+
+
+    <div class="category-container">
+
+        <div
+            class="category"
+            onclick="selectCategory('Electronics')">
+
+            <div class="category-icon">
+                💻
+            </div>
+
+            <p>Electronics</p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Vehicles')">
+
+            <div class="category-icon">
+                🚗
+            </div>
+
+            <p>Vehicles</p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Furniture')">
+
+            <div class="category-icon">
+                🛋️
+            </div>
+
+            <p>Furniture</p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Books')">
+
+            <div class="category-icon">
+                📚
+            </div>
+
+            <p>Books</p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Fashion')">
+
+            <div class="category-icon">
+                👕
+            </div>
+
+            <p>Fashion</p>
+
+        </div>
+
+
+        <div
+            class="category"
+            onclick="selectCategory('Others')">
+
+            <div class="category-icon">
+                ✨
+            </div>
+
+            <p>Others</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section
+    class="products-section"
+    id="products">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="small-title">
+                DISCOVER
+            </p>
+
+            <h2>
+                Featured Listings
+            </h2>
+
+        </div>
+
+
+        <span id="resultCount"></span>
+
+    </div>
+
+
+    <div
+        class="product-grid"
+        id="productGrid">
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SELL ================= -->
+
+<section
+    class="sell-section"
+    id="sell">
+
+
+    <div class="sell-content">
+
+        <p class="small-title">
+            GOT SOMETHING TO SELL?
+        </p>
+
+
+        <h2>
+
+            Turn your unused items
+            into <span>opportunities.</span>
+
+        </h2>
+
+
+        <p class="sell-description">
+
+            List your product in seconds and
+            connect with interested buyers.
+
+        </p>
+
+
+        <button
+            class="sell-main-btn"
+            onclick="openSellForm()">
+
+            Start Selling →
+
+        </button>
+
+    </div>
+
+
+    <div class="sell-icon">
+        📦
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section
+    class="about"
+    id="about">
+
+    <p class="small-title">
+        ABOUT CLASSIFIND
+    </p>
+
+
+    <h2>
+        Simple. Smart. Local.
+    </h2>
+
+
+    <p class="about-description">
+
+        ClassiFind is a simple classified marketplace
+        that helps users buy and sell products easily.
+        Users can search, filter, add and explore
+        listings through an interactive web interface.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            ClassiFind
+        </strong>
+
+        <p>
+            Find what matters.
+        </p>
+
+    </div>
+
+
+    <p>
+        © 2026 ClassiFind. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- ================= SELL MODAL ================= -->
+
+<div
+    class="modal"
+    id="sellModal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-btn"
+            onclick="closeSellForm()">
+
+            ×
+
+        </button>
+
+
+        <p class="small-title">
+            CREATE LISTING
+        </p>
+
+
+        <h2>
+            Sell Your Product
+        </h2>
+
+
+        <form id="sellForm">
+
+
+            <label>
+                Product Name
+            </label>
+
+            <input
+                type="text"
+                id="productName"
+                placeholder="Example: iPhone 14"
+                required
+            >
+
+
+            <label>
+                Price (₹)
+            </label>
+
+            <input
+                type="number"
+                id="productPrice"
+                placeholder="Example: 35000"
+                required
+            >
+
+
+            <label>
+                Category
+            </label>
+
+            <select
+                id="productCategory"
+                required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Vehicles">
+                    Vehicles
+                </option>
+
+                <option value="Furniture">
+                    Furniture
+                </option>
+
+                <option value="Books">
+                    Books
+                </option>
+
+                <option value="Fashion">
+                    Fashion
+                </option>
+
+                <option value="Others">
+                    Others
+                </option>
+
+            </select>
+
+
+            <label>
+                Location
+            </label>
+
+            <input
+                type="text"
+                id="productLocation"
+                placeholder="Example: Coimbatore"
+                required
+            >
+
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                id="productDescription"
+                placeholder="Describe your product..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Publish Listing
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+// ================= PRODUCT DATA =================
+
+let products = [
+
+    {
+        name: "Wireless Headphones",
+        price: 2499,
+        category: "Electronics",
+        location: "Coimbatore",
+        description:
+        "Premium wireless headphones with clear sound.",
+        icon: "🎧"
+    },
+
+
+    {
+        name: "Mountain Bicycle",
+        price: 8500,
+        category: "Vehicles",
+        location: "Chennai",
+        description:
+        "Well-maintained bicycle suitable for daily rides.",
+        icon: "🚲"
+    },
+
+
+    {
+        name: "Study Table",
+        price: 3500,
+        category: "Furniture",
+        location: "Madurai",
+        description:
+        "Wooden study table in excellent condition.",
+        icon: "🪑"
+    },
+
+
+    {
+        name: "Programming Books",
+        price: 1200,
+        category: "Books",
+        location: "Coimbatore",
+        description:
+        "Collection of programming and development books.",
+        icon: "📚"
+    },
+
+
+    {
+        name: "Casual Jacket",
+        price: 1800,
+        category: "Fashion",
+        location: "Bangalore",
+        description:
+        "Stylish casual jacket, lightly used.",
+        icon: "🧥"
+    },
+
+
+    {
+        name: "Smart Watch",
+        price: 2999,
+        category: "Electronics",
+        location: "Salem",
+        description:
+        "Smart watch with fitness tracking features.",
+        icon: "⌚"
+    }
+
+];
+
+
+
+// ================= DISPLAY PRODUCTS =================
+
+function displayProducts(list) {
+
+    const productGrid =
+        document.getElementById("productGrid");
+
+
+    productGrid.innerHTML = "";
+
+
+    document.getElementById("resultCount")
+        .textContent =
+        list.length + " listings found";
+
+
+    if (list.length === 0) {
+
+        productGrid.innerHTML = `
+
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px;
+                color:#777;
+            ">
+
+                <h2>
+                    🔍 No listings found
+                </h2>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    list.forEach(function(product) {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "product-card";
+
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                ${product.icon}
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="product-category">
+
+                    ${product.category}
+
+                </span>
+
+
+                <h3>
+
+                    ${product.name}
+
+                </h3>
+
+
+                <p class="description">
+
+                    ${product.description}
+
+                </p>
+
+
+                <p class="location">
+
+                    📍 ${product.location}
+
+                </p>
+
+
+                <div class="price">
+
+                    ₹${product.price.toLocaleString("en-IN")}
+
+                </div>
+
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('${product.name}')">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        productGrid.appendChild(card);
+
+    });
+
+}
+
+
+
+// ================= SEARCH =================
+
+function searchProducts() {
+
+    const searchText =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const category =
+        document.getElementById("categoryFilter")
+        .value;
+
+
+    const filtered =
+        products.filter(function(product) {
+
+
+            const matchesSearch =
+
+                product.name
+                .toLowerCase()
+                .includes(searchText)
+
+                ||
+
+                product.description
+                .toLowerCase()
+                .includes(searchText)
+
+                ||
+
+                product.location
+                .toLowerCase()
+                .includes(searchText);
+
+
+            const matchesCategory =
+
+                category === "all"
+
+                ||
+
+                product.category === category;
+
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+
+        });
+
+
+    displayProducts(filtered);
+
+}
+
+
+
+// ================= CATEGORY =================
+
+function filterProducts() {
+
+    searchProducts();
+
+}
+
+
+function selectCategory(category) {
+
+    document.getElementById("categoryFilter")
+        .value = category;
+
+
+    document.getElementById("products")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    filterProducts();
+
+}
+
+
+
+// ================= SELL FORM =================
+
+function openSellForm() {
+
+    document.getElementById("sellModal")
+        .classList.add("active");
+
+}
+
+
+function closeSellForm() {
+
+    document.getElementById("sellModal")
+        .classList.remove("active");
+
+}
+
+
+
+// ================= ADD PRODUCT =================
+
+document.getElementById("sellForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("productName")
+                .value;
+
+
+            const price =
+                Number(
+                    document.getElementById("productPrice")
+                    .value
+                );
+
+
+            const category =
+                document.getElementById("productCategory")
+                .value;
+
+
+            const location =
+                document.getElementById("productLocation")
+                .value;
+
+
+            const description =
+                document.getElementById("productDescription")
+                .value;
+
+
+            const newProduct = {
+
+                name: name,
+
+                price: price,
+
+                category: category,
+
+                location: location,
+
+                description: description,
+
+                icon: getCategoryIcon(category)
+
+            };
+
+
+            products.unshift(newProduct);
+
+
+            displayProducts(products);
+
+
+            document.getElementById("sellForm")
+                .reset();
+
+
+            closeSellForm();
+
+
+            alert(
+                "🎉 Your listing has been published successfully!"
+            );
+
+        }
+    );
+
+
+
+// ================= ICON =================
+
+function getCategoryIcon(category) {
+
+    const icons = {
+
+        Electronics: "💻",
+
+        Vehicles: "🚗",
+
+        Furniture: "🛋️",
+
+        Books: "📚",
+
+        Fashion: "👕",
+
+        Others: "✨"
+
+    };
+
+
+    return icons[category] || "📦";
+
+}
+
+
+
+// ================= BUY =================
+
+function buyProduct(productName) {
+
+    alert(
+
+        "🛒 Great choice!\n\n" +
+
+        productName +
+
+        " has been selected.\n\n" +
+
+        "Thank you for using ClassiFind!"
+
+    );
+
+}
+
+
+
+// ================= SCROLL =================
+
+function scrollToProducts() {
+
+    document.getElementById("products")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+// ================= INITIAL DISPLAY =================
+
+displayProducts(products);
+
+
+</script>
+
+</body>
+</html>

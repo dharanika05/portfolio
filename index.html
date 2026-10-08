@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VOXA - Social Platform</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#17202a;
+}
+
+button,input,textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* ================= LOGIN ================= */
+
+#authPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#071e35,#123c5a,#176b87);
+}
+
+.authBox{
+    width:390px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.logoBig{
+    font-size:40px;
+    font-weight:bold;
+    color:#168bd0;
+}
+
+.tagline{
+    color:#657786;
+    margin:8px 0 25px;
+}
+
+.authBox h2{
+    margin-bottom:20px;
+}
+
+.authBox input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:1px solid #ccd6dd;
+    border-radius:9px;
+    outline:none;
+}
+
+.primaryBtn{
+    width:100%;
+    padding:13px;
+    margin-top:12px;
+    border:none;
+    border-radius:25px;
+    background:#168bd0;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.primaryBtn:hover{
+    background:#0877b8;
+}
+
+.switch{
+    margin-top:18px;
+    color:#168bd0;
+    cursor:pointer;
+}
+
+.authError{
+    color:#e0245e;
+    margin-top:10px;
+}
+
+
+/* ================= APP ================= */
+
+#app{
+    display:none;
+}
+
+.layout{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+}
+
+
+/* ================= LEFT ================= */
+
+.left{
+    width:240px;
+    min-height:100vh;
+    background:white;
+    border-right:1px solid #e1e8ed;
+    padding:25px 18px;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#168bd0;
+    margin-bottom:30px;
+}
+
+.navBtn{
+    display:block;
+    width:100%;
+    padding:14px;
+    margin:5px 0;
+    border:none;
+    background:white;
+    text-align:left;
+    border-radius:25px;
+    font-size:16px;
+}
+
+.navBtn:hover{
+    background:#e8f5fe;
+    color:#168bd0;
+}
+
+.postMainBtn{
+    width:100%;
+    padding:13px;
+    margin-top:15px;
+    border:none;
+    border-radius:25px;
+    background:#168bd0;
+    color:white;
+    font-weight:bold;
+}
+
+.logout{
+    width:100%;
+    padding:11px;
+    margin-top:12px;
+    border:1px solid #e0245e;
+    background:white;
+    color:#e0245e;
+    border-radius:25px;
+}
+
+
+/* ================= CENTER ================= */
+
+.center{
+    width:650px;
+    background:white;
+    min-height:100vh;
+    border-right:1px solid #e1e8ed;
+}
+
+.header{
+    padding:20px;
+    border-bottom:1px solid #e1e8ed;
+    font-size:20px;
+    font-weight:bold;
+    position:sticky;
+    top:0;
+    background:white;
+    z-index:5;
+}
+
+
+/* ================= COMPOSER ================= */
+
+.composer{
+    padding:18px;
+    border-bottom:1px solid #e1e8ed;
+}
+
+.composerTop{
+    display:flex;
+    gap:12px;
+}
+
+.myAvatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#168bd0;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    flex-shrink:0;
+}
+
+#postText{
+    width:100%;
+    border:none;
+    outline:none;
+    resize:none;
+    font-size:17px;
+    min-height:70px;
+}
+
+.preview{
+    margin-top:10px;
+}
+
+.preview img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.filePreview{
+    padding:12px;
+    background:#eef6fb;
+    border-radius:10px;
+    margin-top:8px;
+}
+
+.composerTools{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.tool{
+    border:none;
+    background:none;
+    font-size:20px;
+}
+
+.tool:hover{
+    color:#168bd0;
+}
+
+.postBtn{
+    margin-left:auto;
+    border:none;
+    background:#168bd0;
+    color:white;
+    padding:10px 20px;
+    border-radius:22px;
+    font-weight:bold;
+}
+
+
+/* ================= POSTS ================= */
+
+.post{
+    padding:20px;
+    border-bottom:1px solid #e1e8ed;
+}
+
+.post:hover{
+    background:#fafcfd;
+}
+
+.userRow{
+    display:flex;
+    align-items:center;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#168bd0;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.username{
+    font-weight:bold;
+}
+
+.handle{
+    color:#657786;
+    margin-left:5px;
+}
+
+.postText{
+    margin:12px 0 10px 55px;
+    line-height:1.5;
+    white-space:pre-wrap;
+}
+
+.postImage{
+    width:calc(100% - 55px);
+    margin-left:55px;
+    max-height:400px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.postFile{
+    margin-left:55px;
+    padding:15px;
+    background:#eef6fb;
+    border-radius:12px;
+}
+
+.actions{
+    margin-left:55px;
+    margin-top:14px;
+    display:flex;
+    justify-content:space-between;
+    max-width:500px;
+}
+
+.actionBtn{
+    border:none;
+    background:none;
+    color:#657786;
+    font-size:15px;
+}
+
+.actionBtn:hover{
+    color:#168bd0;
+}
+
+.liked{
+    color:#e0245e !important;
+}
+
+.reposted{
+    color:#17bf63 !important;
+}
+
+.saved{
+    color:#168bd0 !important;
+}
+
+.commentBox{
+    margin:12px 0 0 55px;
+    display:none;
+}
+
+.commentBox input{
+    width:80%;
+    padding:9px;
+    border:1px solid #ccd6dd;
+    border-radius:20px;
+}
+
+.commentBox button{
+    border:none;
+    background:#168bd0;
+    color:white;
+    padding:9px 14px;
+    border-radius:20px;
+}
+
+
+/* ================= RIGHT ================= */
+
+.right{
+    width:360px;
+    padding:20px;
+}
+
+.search{
+    width:100%;
+    padding:13px 18px;
+    border:none;
+    border-radius:25px;
+    background:#eef1f4;
+    outline:none;
+}
+
+.box{
+    background:#f5f7fa;
+    border-radius:16px;
+    padding:20px;
+    margin-top:20px;
+}
+
+.box h2{
+    margin-bottom:15px;
+}
+
+.trend{
+    padding:12px 0;
+    border-bottom:1px solid #dce2e6;
+}
+
+.trend small{
+    color:#657786;
+}
+
+.follow{
+    display:flex;
+    justify-content:space-between;
+    margin:16px 0;
+}
+
+.follow button{
+    border:none;
+    background:#17202a;
+    color:white;
+    padding:7px 14px;
+    border-radius:20px;
+}
+
+
+/* ================= PROFILE ================= */
+
+.profilePage{
+    display:none;
+}
+
+.cover{
+    height:160px;
+    background:linear-gradient(135deg,#168bd0,#6c63ff);
+}
+
+.profileAvatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#168bd0;
+    color:white;
+    border:5px solid white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    font-weight:bold;
+    margin:-50px 0 0 25px;
+}
+
+.profileInfo{
+    padding:15px 25px;
+}
+
+.profileInfo p{
+    color:#657786;
+    margin-top:8px;
+}
+
+
+/* ================= NOTIFICATIONS ================= */
+
+.notificationPage{
+    display:none;
+    padding:20px;
+}
+
+.notification{
+    padding:18px;
+    border-bottom:1px solid #e1e8ed;
+}
+
+
+/* ================= DARK MODE ================= */
+
+.dark body{
+    background:#0f1419;
+}
+
+.dark .left,
+.dark .center,
+.dark .header,
+.dark .composer{
+    background:#15202b;
+    color:white;
+}
+
+.dark .navBtn{
+    background:#15202b;
+    color:white;
+}
+
+.dark .navBtn:hover{
+    background:#253341;
+}
+
+.dark .post:hover{
+    background:#192734;
+}
+
+.dark .right{
+    background:#0f1419;
+}
+
+.dark .box{
+    background:#192734;
+}
+
+.dark #postText{
+    background:#15202b;
+    color:white;
+}
+
+.dark .header{
+    border-color:#38444d;
+}
+
+.dark .post,
+.dark .composer{
+    border-color:#38444d;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .right{
+        display:none;
+    }
+
+    .center{
+        width:calc(100% - 240px);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .left{
+        display:none;
+    }
+
+    .center{
+        width:100%;
+    }
+
+    .postImage{
+        width:100%;
+        margin-left:0;
+    }
+
+    .postText{
+        margin-left:0;
+    }
+
+    .actions{
+        margin-left:0;
+    }
+
+    .commentBox{
+        margin-left:0;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= AUTH ================= -->
+
+<div id="authPage">
+
+<div class="authBox">
+
+<div class="logoBig">VOXA</div>
+
+<p class="tagline">
+Share. Connect. Discover.
+</p>
+
+
+<div id="loginForm">
+
+<h2>Welcome Back</h2>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Email address">
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password">
+
+<button
+class="primaryBtn"
+onclick="login()">
+Login
+</button>
+
+<p
+class="switch"
+onclick="showSignup()">
+Don't have an account? Sign Up
+</p>
+
+<p
+id="loginError"
+class="authError">
+</p>
+
+</div>
+
+
+
+<div
+id="signupForm"
+style="display:none;">
+
+<h2>Create Account</h2>
+
+<input
+type="text"
+id="signupName"
+placeholder="Full name">
+
+<input
+type="email"
+id="signupEmail"
+placeholder="Email address">
+
+<input
+type="password"
+id="signupPassword"
+placeholder="Create password">
+
+<button
+class="primaryBtn"
+onclick="signup()">
+Create Account
+</button>
+
+<p
+class="switch"
+onclick="showLogin()">
+Already have an account? Login
+</p>
+
+<p
+id="signupError"
+class="authError">
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= APP ================= -->
+
+<div id="app">
+
+<div class="layout">
+
+
+<!-- LEFT NAVIGATION -->
+
+<aside class="left">
+
+<div class="logo">
+VOXA
+</div>
+
+
+<button
+class="navBtn"
+onclick="showHome()">
+🏠 Home
+</button>
+
+
+<button
+class="navBtn">
+🔍 Explore
+</button>
+
+
+<button
+class="navBtn"
+onclick="showNotifications()">
+🔔 Notifications
+</button>
+
+
+<button
+class="navBtn">
+💬 Messages
+</button>
+
+
+<button
+class="navBtn"
+onclick="showProfile()">
+👤 Profile
+</button>
+
+
+<button
+class="navBtn"
+onclick="toggleDark()">
+🌙 Dark Mode
+</button>
+
+
+<button
+class="postMainBtn"
+onclick="focusComposer()">
++ Create Post
+</button>
+
+
+<button
+class="logout"
+onclick="logout()">
+Logout
+</button>
+
+</aside>
+
+
+
+<!-- CENTER -->
+
+<main class="center">
+
+
+<div class="header">
+Home
+</div>
+
+
+<!-- COMPOSER -->
+
+<div
+class="composer"
+id="composer">
+
+<div class="composerTop">
+
+<div class="myAvatar">
+D
+</div>
+
+<textarea
+id="postText"
+placeholder="What's happening?">
+</textarea>
+
+</div>
+
+
+<div
+id="preview"
+class="preview">
+</div>
+
+
+<div class="composerTools">
+
+<label
+class="tool"
+title="Add Image">
+🖼️
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+hidden
+onchange="previewImage(event)">
+</label>
+
+
+<label
+class="tool"
+title="Add Document">
+📄
+<input
+type="file"
+id="documentInput"
+accept=".pdf,.doc,.docx,.txt"
+hidden
+onchange="previewDocument(event)">
+</label>
+
+
+<label
+class="tool"
+title="Add Video">
+🎥
+<input
+type="file"
+id="videoInput"
+accept="video/*"
+hidden
+onchange="previewVideo(event)">
+</label>
+
+
+<button
+class="tool"
+onclick="addEmoji()">
+😊
+</button>
+
+
+<button
+class="postBtn"
+onclick="createPost()">
+Post
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- POSTS -->
+
+<div id="posts">
+
+
+<!-- POST 1 -->
+
+<div class="post">
+
+<div class="userRow">
+
+<div class="avatar">
+D
+</div>
+
+<div>
+<span class="username">
+Dharanika
+</span>
+
+<span class="handle">
+@dharanika
+</span>
+</div>
+
+</div>
+
+
+<div class="postText">
+Learning web development and building my own social media application! 🚀
+
+#WebDevelopment #Coding
+</div>
+
+
+<div class="actions">
+
+<button
+class="actionBtn"
+onclick="comment(this)">
+💬 12
+</button>
+
+<button
+class="actionBtn"
+onclick="repost(this)">
+🔁 8
+</button>
+
+<button
+class="actionBtn"
+onclick="like(this)">
+❤️ 25
+</button>
+
+<button
+class="actionBtn"
+onclick="bookmark(this)">
+🔖
+</button>
+
+<button
+class="actionBtn"
+onclick="sharePost()">
+📤
+</button>
+
+</div>
+
+
+<div class="commentBox">
+
+<input
+placeholder="Write a comment...">
+
+<button>
+Send
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- POST 2 -->
+
+<div class="post">
+
+<div class="userRow">
+
+<div class="avatar">
+A
+</div>
+
+<div>
+<span class="username">
+Alex
+</span>
+
+<span class="handle">
+@alex
+</span>
+</div>
+
+</div>
+
+
+<div class="postText">
+Technology becomes powerful when we use it to solve real-world problems. 💡
+</div>
+
+
+<div class="actions">
+
+<button
+class="actionBtn"
+onclick="comment(this)">
+💬 20
+</button>
+
+<button
+class="actionBtn"
+onclick="repost(this)">
+🔁 15
+</button>
+
+<button
+class="actionBtn"
+onclick="like(this)">
+❤️ 42
+</button>
+
+<button
+class="actionBtn"
+onclick="bookmark(this)">
+🔖
+</button>
+
+<button
+class="actionBtn"
+onclick="sharePost()">
+📤
+</button>
+
+</div>
+
+
+<div class="commentBox">
+
+<input
+placeholder="Write a comment...">
+
+<button>
+Send
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- PROFILE -->
+
+<div
+id="profilePage"
+class="profilePage">
+
+<div class="cover"></div>
+
+<div class="profileAvatar">
+D
+</div>
+
+<div class="profileInfo">
+
+<h2>
+Dharanika
+</h2>
+
+<p>
+@dharanika
+</p>
+
+<p>
+Information Technology Student |
+Web Developer | UI/UX Enthusiast
+</p>
+
+<p>
+📍 Tamil Nadu
+</p>
+
+<p>
+🗓️ Joined 2026
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- NOTIFICATIONS -->
+
+<div
+id="notificationPage"
+class="notificationPage">
+
+<h2>
+Notifications
+</h2>
+
+<div class="notification">
+❤️ Alex liked your post.
+</div>
+
+<div class="notification">
+🔁 Sarah reposted your post.
+</div>
+
+<div class="notification">
+👤 Rahul started following you.
+</div>
+
+<div class="notification">
+💬 You received a new comment.
+</div>
+
+</div>
+
+
+</main>
+
+
+
+<!-- RIGHT SIDEBAR -->
+
+<aside class="right">
+
+
+<input
+class="search"
+id="searchInput"
+placeholder="Search Voxa..."
+onkeyup="searchPosts()">
+
+
+
+<div class="box">
+
+<h2>
+🔥 Trending
+</h2>
+
+
+<div class="trend">
+
+<small>Trending in India</small>
+
+<br>
+
+<b>#Technology</b>
+
+</div>
+
+
+<div class="trend">
+
+<small>Trending</small>
+
+<br>
+
+<b>#ArtificialIntelligence</b>
+
+</div>
+
+
+<div class="trend">
+
+<small>Trending</small>
+
+<br>
+
+<b>#WebDevelopment</b>
+
+</div>
+
+
+<div class="trend">
+
+<small>Trending</small>
+
+<br>
+
+<b>#UIDesign</b>
+
+</div>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>
+Who to follow
+</h2>
+
+
+<div class="follow">
+
+<b>Alex</b>
+
+<button>
+Follow
+</button>
+
+</div>
+
+
+<div class="follow">
+
+<b>Sarah</b>
+
+<button>
+Follow
+</button>
+
+</div>
+
+
+<div class="follow">
+
+<b>Rahul</b>
+
+<button>
+Follow
+</button>
+
+</div>
+
+</div>
+
+
+</aside>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* ================= AUTH ================= */
+
+function showSignup(){
+
+document.getElementById("loginForm").style.display="none";
+
+document.getElementById("signupForm").style.display="block";
+
+}
+
+
+function showLogin(){
+
+document.getElementById("signupForm").style.display="none";
+
+document.getElementById("loginForm").style.display="block";
+
+}
+
+
+function signup(){
+
+let name=document.getElementById("signupName").value;
+
+let email=document.getElementById("signupEmail").value;
+
+let password=document.getElementById("signupPassword").value;
+
+let error=document.getElementById("signupError");
+
+
+if(name==="" || email==="" || password===""){
+
+error.innerText="Please fill all fields.";
+
+return;
+
+}
+
+error.innerText="";
+
+alert("Account created successfully!");
+
+showLogin();
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+let email=document.getElementById("loginEmail").value;
+
+let password=document.getElementById("loginPassword").value;
+
+let error=document.getElementById("loginError");
+
+
+if(email==="" || password===""){
+
+error.innerText="Please enter email and password.";
+
+return;
+
+}
+
+
+document.getElementById("authPage").style.display="none";
+
+document.getElementById("app").style.display="block";
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+document.getElementById("app").style.display="none";
+
+document.getElementById("authPage").style.display="flex";
+
+}
+
+
+/* ================= IMAGE PREVIEW ================= */
+
+let selectedImage=null;
+
+let selectedDocument=null;
+
+let selectedVideo=null;
+
+
+function previewImage(event){
+
+let file=event.target.files[0];
+
+if(!file) return;
+
+selectedImage=file;
+
+let url=URL.createObjectURL(file);
+
+document.getElementById("preview").innerHTML=
+`<img src="${url}">`;
+
+}
+
+
+/* DOCUMENT */
+
+function previewDocument(event){
+
+let file=event.target.files[0];
+
+if(!file) return;
+
+selectedDocument=file;
+
+document.getElementById("preview").innerHTML=
+`
+<div class="filePreview">
+📄 <b>${file.name}</b>
+<br>
+<small>${(file.size/1024).toFixed(1)} KB</small>
+</div>
+`;
+
+}
+
+
+/* VIDEO */
+
+function previewVideo(event){
+
+let file=event.target.files[0];
+
+if(!file) return;
+
+selectedVideo=file;
+
+let url=URL.createObjectURL(file);
+
+document.getElementById("preview").innerHTML=
+`
+<video controls style="width:100%;max-height:300px;border-radius:12px;">
+<source src="${url}">
+</video>
+`;
+
+}
+
+
+/* EMOJI */
+
+function addEmoji(){
+
+let textarea=document.getElementById("postText");
+
+textarea.value += " 😊";
+
+textarea.focus();
+
+}
+
+
+/* ================= CREATE POST ================= */
+
+function createPost(){
+
+let text=document.getElementById("postText").value.trim();
+
+let preview=document.getElementById("preview");
+
+
+if(
+text==="" &&
+!selectedImage &&
+!selectedDocument &&
+!selectedVideo
+){
+
+alert("Write something or add a file.");
+
+return;
+
+}
+
+
+let post=document.createElement("div");
+
+post.className="post";
+
+
+let media="";
+
+
+if(selectedImage){
+
+let url=URL.createObjectURL(selectedImage);
+
+media=
+`<img class="postImage" src="${url}">`;
+
+}
+
+
+if(selectedDocument){
+
+media=
+`
+<div class="postFile">
+📄 <b>${selectedDocument.name}</b>
+<br>
+<small>Document attached</small>
+</div>
+`;
+
+}
+
+
+if(selectedVideo){
+
+let url=URL.createObjectURL(selectedVideo);
+
+media=
+`
+<video controls
+style="width:calc(100% - 55px);
+margin-left:55px;
+max-height:400px;
+border-radius:14px;">
+<source src="${url}">
+</video>
+`;
+
+}
+
+
+post.innerHTML=
+`
+<div class="userRow">
+
+<div class="avatar">
+D
+</div>
+
+<div>
+
+<span class="username">
+Dharanika
+</span>
+
+<span class="handle">
+@dharanika
+</span>
+
+</div>
+
+</div>
+
+<div class="postText">
+${text}
+</div>
+
+${media}
+
+<div class="actions">
+
+<button class="actionBtn"
+onclick="comment(this)">
+💬 0
+</button>
+
+<button class="actionBtn"
+onclick="repost(this)">
+🔁 0
+</button>
+
+<button class="actionBtn"
+onclick="like(this)">
+❤️ 0
+</button>
+
+<button class="actionBtn"
+onclick="bookmark(this)">
+🔖
+</button>
+
+<button class="actionBtn"
+onclick="sharePost()">
+📤
+</button>
+
+<button class="actionBtn"
+onclick="deletePost(this)">
+🗑️
+</button>
+
+</div>
+
+<div class="commentBox">
+
+<input placeholder="Write a comment...">
+
+<button>
+Send
+</button>
+
+</div>
+`;
+
+
+document
+.getElementById("posts")
+.prepend(post);
+
+
+document.getElementById("postText").value="";
+
+preview.innerHTML="";
+
+document.getElementById("imageInput").value="";
+
+document.getElementById("documentInput").value="";
+
+document.getElementById("videoInput").value="";
+
+selectedImage=null;
+
+selectedDocument=null;
+
+selectedVideo=null;
+
+}
+
+
+/* ================= LIKE ================= */
+
+function like(button){
+
+let number=parseInt(button.innerText.match(/\d+/)[0]);
+
+
+if(button.classList.contains("liked")){
+
+number--;
+
+button.classList.remove("liked");
+
+}else{
+
+number++;
+
+button.classList.add("liked");
+
+}
+
+
+button.innerText="❤️ "+number;
+
+}
+
+
+/* ================= REPOST ================= */
+
+function repost(button){
+
+let number=parseInt(button.innerText.match(/\d+/)[0]);
+
+
+if(button.classList.contains("reposted")){
+
+number--;
+
+button.classList.remove("reposted");
+
+}else{
+
+number++;
+
+button.classList.add("reposted");
+
+}
+
+
+button.innerText="🔁 "+number;
+
+}
+
+
+/* ================= BOOKMARK ================= */
+
+function bookmark(button){
+
+button.classList.toggle("saved");
+
+}
+
+
+/* ================= COMMENT ================= */
+
+function comment(button){
+
+let box=button
+.parentElement
+.parentElement
+.querySelector(".commentBox");
+
+if(box.style.display==="block"){
+
+box.style.display="none";
+
+}else{
+
+box.style.display="block";
+
+}
+
+}
+
+
+/* ================= SHARE ================= */
+
+function sharePost(){
+
+if(navigator.share){
+
+navigator.share({
+title:"VOXA Post",
+text:"Check this post on VOXA!"
+});
+
+}else{
+
+navigator.clipboard.writeText("VOXA Post");
+
+alert("Post link copied!");
+
+}
+
+}
+
+
+/* ================= DELETE ================= */
+
+function deletePost(button){
+
+let post=button.closest(".post");
+
+if(confirm("Delete this post?")){
+
+post.remove();
+
+}
+
+}
+
+
+/* ================= PROFILE ================= */
+
+function showProfile(){
+
+hidePages();
+
+document.getElementById("profilePage").style.display="block";
+
+}
+
+
+function showNotifications(){
+
+hidePages();
+
+document.getElementById("notificationPage").style.display="block";
+
+}
+
+
+function showHome(){
+
+hidePages();
+
+document.getElementById("posts").style.display="block";
+
+document.getElementById("composer").style.display="block";
+
+}
+
+
+function hidePages(){
+
+document.getElementById("profilePage").style.display="none";
+
+document.getElementById("notificationPage").style.display="none";
+
+document.getElementById("posts").style.display="block";
+
+document.getElementById("composer").style.display="block";
+
+}
+
+
+/* ================= FOCUS ================= */
+
+function focusComposer(){
+
+document.getElementById("postText").focus();
+
+}
+
+
+/* ================= DARK MODE ================= */
+
+function toggleDark(){
+
+document.documentElement.classList.toggle("dark");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchPosts(){
+
+let search=document
+.getElementById("searchInput")
+.value
+.toLowerCase();
+
+let posts=document
+.querySelectorAll(".post");
+
+
+posts.forEach(function(post){
+
+let text=post.innerText.toLowerCase();
+
+if(text.includes(search)){
+
+post.style.display="block";
+
+}else{
+
+post.style.display="none";
+
+}
+
+});
+
+}
+
+</script>
+
+
+</body>
+
+</html>
